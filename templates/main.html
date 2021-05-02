@@ -1,5 +1,6 @@
 {% extends "master.html" %}
 
+{% block bodyclass %}class="d-flex flex-column min-vh-100"{% endblock %}
 
 {% block head %}
     <link href="{{ url_for('theme.static', filename='vendor/bootstrap-4.3.1/bootstrap.min.nodata.css') }}" rel="stylesheet" type="text/css">
@@ -51,13 +52,13 @@
 {% endblock %}
 
 {% block footer %}
-    <footer class="bg-light border-top py-4 mt-4">
+    <footer class="text-light border-top py-4 mt-auto">
         <div class="container h6 text-center">
             {% set noggin_link %}
                 <a href="https://github.com/fedora-infra/noggin">noggin</a>
             {% endset %}
             <div><small>{{_("Powered by %(noggin_link)s", noggin_link=noggin_link)}}</small></div>
-            <div class="text-muted"><small>{{ ipa.ipa_version|default('') }}</small></div>
+            <div class="text-light"><small>{{ ipa.ipa_version|default('') }}</small></div>
         </div>
     </footer>
 {% endblock %}

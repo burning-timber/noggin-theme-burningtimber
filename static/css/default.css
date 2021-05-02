@@ -50,10 +50,13 @@ html, body {
 }
 
 body{
-	font-family: 'Lato', sans-serif;
+  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("../images/Background.svg") fixed no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Lato', sans-serif;
   line-height: 26px;
-	color: #6d6e71;
-	font-size: 13px;
+  color: #6d6e71;
+  font-size: 13px;
 }
 
 
@@ -358,6 +361,14 @@ textarea{
 /*==================================================
   Header
   ==================================================*/
+
+.navbar-inner {
+  width: 100%;
+}
+
+.navbar-inner .container {
+  text-align: center;
+}
 
 #header{
   min-height: 50px;
@@ -815,9 +826,6 @@ textarea{
   ==================================================*/  
 
 #lp-register{
-  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("../images/Background.svg") fixed no-repeat;
-  background-size: cover;
-  background-position: center;
   position: absolute;
   top: 0;
   width: 100%;

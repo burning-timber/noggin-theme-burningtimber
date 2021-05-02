@@ -1,5 +1,15 @@
 {% extends "main.html" %}
 
+{% block navbar %}
+<div class="navbar navbar-fixed-top navbar-default">
+  <div class="navbar-inner">
+    <div class="container">
+      <img class="brand" src="{{ url_for('theme.static', filename='images/logo.png') }}" />
+    </div>
+  </div>
+</div>
+{% endblock %}
+
 {% block content %}
     <div id="lp-register">
     	<div class="container wrapper">
@@ -9,11 +19,11 @@
               <h3 class="text-white">Authorized Use Only</h3>
               <p>Any or all uses of this system and all data on this system may be intercepted,
 monitored, recorded, copied, audited, inspected, peered at, judged, laughed at,
-broadcasted to satellites, transmitted to alien civilizations, and disclosed
+broadcast to satellites, transmitted to alien civilizations, and disclosed
 to authorized sites and law enforcement personnel, as well as authorized
-officials of other agencies, as determined by International Maritime Law and
+officials of other agencies as determined by International Maritime Law and
 Charlie Sheen.</p>
-              <p>By using this system, the user consent to such disclosure at the discretion
+              <p>By using this system, the user consents to such disclosure at the discretion
 of authorized site personnel. Unauthorized or improper use of this system may
 result in administrative disciplinary action, civil and criminal penalties,
 and ridicule in front of a room of 1,000 angry nerds. By continuing to use
@@ -36,8 +46,7 @@ stated in this warning. Or, you know, do what you were going to do anyway.  You 
               <!--Registration Form Contents-->
               <div class="tab-content">
                 <div class="tab-pane {{'active' if activetab == 'register'}}" id="register">
-                  <h3>Register Now !!!</h3>
-                  <p class="text-muted">Be cool and join today. Meet millions</p>
+                  <h3>Create an account</h3>
                   {% include '_register_form.html' %}
                 </div>
 
