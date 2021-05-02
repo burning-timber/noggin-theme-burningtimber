@@ -832,7 +832,7 @@ textarea{
 .intro-texts{
   color: #fff;
   font-size: 14px;
-  transform: translateY(100px);
+  padding-top: 40px;
 }
 
 .intro-texts h1{
