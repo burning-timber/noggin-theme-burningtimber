@@ -364,10 +364,15 @@ textarea{
 
 .navbar-inner {
   width: 100%;
+  max-height: 100px;
 }
 
 .navbar-inner .container {
   text-align: center;
+}
+
+.brand {
+  max-height: 100px;
 }
 
 #header{
