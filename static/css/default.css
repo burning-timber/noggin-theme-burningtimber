@@ -393,7 +393,7 @@ header a {
 }
 
 .navbar-form {
-  position: fixed;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }

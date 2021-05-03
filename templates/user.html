@@ -122,9 +122,13 @@
                         <img src="{{ group_avatar(group.name, 400) }}" alt="profile-cover" class="img-responsive cover">
                         <div class="card-info">
                           <div class="group-info">
-                            <h5><a href="{{ url_for('.group', groupname=group.name) }}" class="profile-link">{{ group.name }}</a></h5>
-                            <span class="badge badge-info {{ 'invisible' if group not in managed_groups }}">{{ _('sponsor') }}</span>
-                            <span class="badge badge-success {{ 'invisible' if group not in member_groups }}">{{ _('member') }}</span>
+                            <h5 class="d-inline"><a href="{{ url_for('.group', groupname=group.name) }}" class="profile-link">{{ group.name }}</a></h5>
+                            {% if group in member_groups %}
+                            <span class="badge badge-info">{{ _('member') }}</span>
+                            {% endif %}
+                            {% if group in managed_groups %}
+                            <span class="badge badge-success">{{ _('admin') }}</span>
+                            {% endif %}
                             {% if group.description %}
                             <p>{{ group.description }}</p>
                             {% endif %}
