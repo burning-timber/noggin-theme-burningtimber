@@ -155,6 +155,10 @@ section .wrapper{
   padding: 30px 0 50px;
 }
 
+#page-contents #user_attributes {
+  margin-top: 60px;
+}
+
 .btn-primary{
 	background: #27aae1;
 	padding: 7px 25px;
@@ -512,7 +516,7 @@ textarea{
   ==================================================*/
 
 #banner{
-	background: url("http://placehold.it/1920x900") fixed no-repeat;
+	background: url("https://via.placeholder.com/1920x900") fixed no-repeat;
   background-position: center;
 	background-size: cover;
 	width: 100%;
@@ -722,7 +726,7 @@ textarea{
   ==================================================*/
 
 .img-divider{
-  background: url("http://placehold.it/1920x460") no-repeat;
+  background: url("https://via.placeholder.com/1920x460") no-repeat;
   background-size: cover;
   text-align: center;
   min-height: 460px;
@@ -735,7 +739,7 @@ textarea{
   ==================================================*/
 
 #site-facts{
-	background: radial-gradient(rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 1) 100%), url("http://placehold.it/1920x1280") fixed no-repeat;
+	background: radial-gradient(rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 1) 100%), url("https://via.placeholder.com/1920x1280") fixed no-repeat;
 	background-size: cover;
 	height: 500px !important;
 	text-align: center;
@@ -1034,7 +1038,7 @@ textarea{
 /*Profile Card CSS*/
 
 .profile-card{
-  background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url("http://placehold.it/1030x430") no-repeat;
+  background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url("https://via.placeholder.com/1030x430") no-repeat;
   background-size: cover;
   width: 100%;
   min-height: 90px;
@@ -1549,7 +1553,7 @@ ul.online-users li span.online-dot{
   ==================================================*/
 
 .timeline-cover{
-  background: url("http://placehold.it/1030x360") no-repeat;
+  background: url("https://via.placeholder.com/1030x360") no-repeat;
   background-position: center;
   background-size: cover;
   min-height: 360px;
@@ -2057,7 +2061,7 @@ input:checked + .slider:before{
   ==================================================*/
 
 .page-title-section.faq{
-  background: linear-gradient(to right, rgba(0,0,0, 0.5) , rgba(0,0,0, 0.5)), url("http://placehold.it/1920x500") fixed no-repeat;
+  background: linear-gradient(to right, rgba(0,0,0, 0.5) , rgba(0,0,0, 0.5)), url("https://via.placeholder.com/1920x500") fixed no-repeat;
   background-size: cover;
   background-position: center;
   padding: 90px 0 110px;
