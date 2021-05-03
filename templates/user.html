@@ -108,13 +108,13 @@
               <div class="about-profile">
                 {% if user.bio %}
                 <div class="about-content-block">
-                  <h4 class="grey"><i class="fa-info-circle icon-in-title"></i>My self-summary</h4>
+                  <h4 class="grey"><i class="fa fa-info-circle icon-in-title"></i>My self-summary</h4>
                   <p>{{ user.bio }}</p>
                 </div>
                 {% endif %}
                 {% if groups %}
                 <div class="about-content-block">
-                  <h4 class="grey"><i class="fa-group icon-in-title"></i>Groups</h4>
+                  <h4 class="grey"><i class="fa fa-group icon-in-title"></i>Groups</h4>
                   <div class="row">
                     {% for group in groups %}
                     <div class="col-md-6 col-sm-6">
