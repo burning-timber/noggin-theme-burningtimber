@@ -368,6 +368,17 @@ textarea{
   Header
   ==================================================*/
 
+header {
+  display: block;
+  background: #231F20;
+}
+
+header a {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .navbar-inner {
   width: 100%;
   max-height: 100px;
