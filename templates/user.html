@@ -119,7 +119,7 @@
                     {% for group in groups %}
                     <div class="col-md-6 col-sm-6">
                       <div class="friend-card">
-                        <img src="https://via.placeholder.com/1030x360.png" alt="profile-cover" class="img-responsive cover">
+                        <img src="{{ group_avatar(group.name, 400) }}" alt="profile-cover" class="img-responsive cover">
                         <div class="card-info">
                           <div class="friend-info">
                             <h5><a href="{{ url_for('.group', groupname=group.name) }}" class="profile-link">{{ group.name }}</a></h5>
