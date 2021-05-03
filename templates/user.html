@@ -1,0 +1,158 @@
+{% extends "main.html" %}
+
+{% block title %}{{_("Profile for %(username)s", username=user.username)}}{% endblock %}
+
+{% block content %}
+  <div class="container">
+
+      <!-- Timeline
+      ================================================= -->
+      <div class="timeline">
+        <div class="timeline-cover">
+
+          <!--Timeline Menu for Large Screens-->
+          <div class="timeline-nav-bar hidden-sm hidden-xs">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="profile-info">
+                  <img src="{{ gravatar(user.username if user.username else 'default', 400) }}" alt="{{ user.username }} avatar" class="img-responsive profile-photo">
+                  <h3>{{ user.name if user.name else user.username }}</h3>
+                  <p class="text-muted">{{ user.username }}</p>
+                  {% if user.username == current_user.username %}
+                  <a href="{{ url_for('.user_settings_profile', username=user.username) }}" class="btn btn-primary">{{_("Edit Profile")}}</a>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-md-9">
+                <ul class="list-inline profile-menu">
+                  <li><a href="#" class="active">About</a></li>
+                  <li><a href="#">Friends</a></li>
+                </ul>
+                <ul class="follow-me list-inline">
+                  <li>1,337 followers</li>
+                  {% if user.username != current_user.username %}
+                  <li><button class="btn-primary">Follow</button></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div><!--Timeline Menu for Large Screens End-->
+
+          <!--Timeline Menu for Small Screens-->
+          <div class="navbar-mobile hidden-lg hidden-md">
+            <div class="profile-info">
+              <img src="{{ gravatar(user.username if user.username else 'default', 400) }}" alt="{{ user.username }} avatar" class="img-responsive profile-photo">
+              <h4>{{ user.name if user.name else user.username }}</h4>
+              <p class="text-muted">{{ user.username }}</p>
+              {% if user.username == current_user.username %}
+              <a href="{{ url_for('.user_settings_profile', username=user.username) }}" class="btn btn-primary">{{_("Edit Profile")}}</a>
+              {% endif %}
+            </div>
+          </div><!--Timeline Menu for Small Screens End-->
+
+        </div>
+        <div id="page-contents">
+          <div class="row">
+            <div class="col-md-3">
+              <ul class="list-group list-group-flush" id="user_attributes">
+              {% if user.pronouns %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong title="{{_('Pronouns')}}">
+                    <i class="fa fa-fw fa-genderless"></i>
+                    {{_("Pronouns")}}
+                  </strong>
+                  <div class="text-right">
+                    <div>{{ user.pronouns }}</div>
+                  </div>
+                </li>
+              {% endif %}
+              {% if user.timezone %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong title="{{_('Timezone')}}">
+                    <i class="fa fa-fw fa-globe"></i>
+                    {{_("Timezone")}}
+                  </strong>
+                  <div class="text-right">
+                    <div>{{ user.timezone }}</div>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong title="{{_('Current Time')}}">
+                    <i class="fa fa-fw fa-clock-o"></i>
+                    {{_("Current Time")}}
+                  </strong>
+                  <div class="text-right">
+                    <div id="user-time">&nbsp;</div>
+                  </div>
+                </li>
+              {% endif %}
+              {% if user.website_url %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong title='{{_("Website")}}'><i class="fa fa-fw fa-link" aria-hidden="true"></i> {{_("Website")}}</strong>
+                  <a href="{{ user.website_url }}" target="_blank">{{ user.website_url }}</a>
+                </li>
+              {% endif %}
+              {% if user.github %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <strong title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</strong>
+                  <a href="https://github.com/{{ user.github }}">@{{ user.github }}</a>
+                </li>
+              {% endif %}
+              {{ userlinks() if userlinks is defined }}
+              </ul>
+            </div>
+            <div class="col-md-9">
+
+              <!-- About
+              ================================================= -->
+              <div class="about-profile">
+                {% if user.description %}
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="fa-info-circle icon-in-title"></i>My self-summary</h4>
+                  <p>{{ user.description }}</p>
+                </div>
+                {% endif %}
+                {% if groups %}
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="fa-group icon-in-title"></i>Groups</h4>
+                  <div class="row">
+                    {% for group in groups %}
+                    <div class="col-md-6 col-sm-6">
+                      <div class="friend-card">
+                        <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover">
+                        <div class="card-info">
+                          <div class="friend-info">
+                            <h5><a href="{{ url_for('.group', groupname=group.name) }}" class="profile-link">{{ group.name }}</a></h5>
+                            <span class="badge badge-info {{ 'invisible' if group not in managed_groups }}">{{ _('sponsor') }}</span>
+                            <span class="badge badge-success {{ 'invisible' if group not in member_groups }}">{{ _('member') }}</span>
+                            {% if group.description %}
+                            <p>{{ group.description }}</p>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+{% if user.timezone %}
+  <script nonce="{{ csp_nonce() }}">
+    function generate_local_time(){
+      var currenttime = moment().tz("{{user.timezone}}").format('dddd, h:mm:ss a')
+      $("#user-time").html(currenttime)
+    }
+    setInterval(generate_local_time, 1000);
+  </script>
+{% endif %}
+{% endblock %}
