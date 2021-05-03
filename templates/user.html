@@ -118,10 +118,10 @@
                   <div class="row">
                     {% for group in groups %}
                     <div class="col-md-6 col-sm-6">
-                      <div class="friend-card">
+                      <div class="group-card">
                         <img src="{{ group_avatar(group.name, 400) }}" alt="profile-cover" class="img-responsive cover">
                         <div class="card-info">
-                          <div class="friend-info">
+                          <div class="group-info">
                             <h5><a href="{{ url_for('.group', groupname=group.name) }}" class="profile-link">{{ group.name }}</a></h5>
                             <span class="badge badge-info {{ 'invisible' if group not in managed_groups }}">{{ _('sponsor') }}</span>
                             <span class="badge badge-success {{ 'invisible' if group not in member_groups }}">{{ _('member') }}</span>
