@@ -15,9 +15,12 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="profile-info">
-                  <img src="{{ gravatar(user.username if user.username else 'default', 400) }}" alt="{{ user.username }} avatar" class="img-responsive profile-photo">
+                  <img src="/avatar/user/{{ user.username }}" alt="{{ user.username }} avatar" class="img-responsive profile-photo">
                   <h3>{{ user.name if user.name else user.username }}</h3>
-                  <p class="text-muted">{{ user.username }}</p>
+                  <p><span class="text-muted">{{ user.username }}</span>
+                  {% if member_groups and "bt-staff" in member_groups|map(attribute='name') %}
+                  <span class="badge badge-info">{{ _('staff') }}</span>
+                  {% endif %}</p>
                   {% if user.username == current_user.username %}
                   <a href="{{ url_for('.user_settings_profile', username=user.username) }}" class="btn btn-primary">{{_("Edit Profile")}}</a>
                   {% endif %}
@@ -119,7 +122,7 @@
                     {% for group in groups %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="group-card">
-                        <img src="{{ group_avatar(group.name, 400) }}" alt="profile-cover" class="img-responsive cover">
+                        <img src="/avatar/group/{{ group.name }}?s=400" alt="profile-cover" class="img-responsive cover">
                         <div class="card-info">
                           <div class="group-info">
                             <h5 class="d-inline"><a href="{{ url_for('.group', groupname=group.name) }}" class="profile-link">{{ group.name }}</a></h5>

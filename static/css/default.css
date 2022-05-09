@@ -57,7 +57,7 @@ body{
 }
 
 .landing {
-  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("https://account.burningtimber.com/Background.svg") fixed no-repeat;
+  background: linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("/theme/static/images/Background.svg") fixed no-repeat;
   background-size: cover;
   background-position: center;
 }
